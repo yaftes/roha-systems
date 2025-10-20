@@ -18,7 +18,7 @@ export default function Header({
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      const headerOffset = 80 // reduced offset slightly
+      const headerOffset = 70
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
       window.scrollTo({ top: offsetPosition, behavior: "smooth" })
@@ -28,17 +28,19 @@ export default function Header({
 
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-background/80 border-b border-border shadow-lg shadow-primary/10">
-      <nav className="max-w-7xl mx-auto px-6 py- flex items-center justify-between"> {/* reduced py-4 → py-2 */}
-        {/* Logo */}
-        <div className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-opacity duration-300">
+      <nav className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+        {/* Logo & Brand */}
+        <div className="flex items-center gap-4 cursor-pointer group">
           <img
             src="/logo-light.png"
             alt="Roha Systems Logo"
-            className="w-32 h-32 object-contain"
+            className="w-24 h-24 sm:w-28 sm:h-28 object-contain transform group-hover:scale-110 transition-transform duration-500"
           />
-          <span className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            Roha Systems
-          </span>
+          <div className="flex flex-col">
+            <span className="text-3xl sm:text-4xl font-extrabold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent tracking-tight">
+              Roha Systems
+            </span>
+          </div>
         </div>
 
         {/* Desktop Menu */}
