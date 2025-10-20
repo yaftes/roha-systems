@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react"
+
 export default function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: "smooth" })
+    if (element) {
+      const headerOffset = 80 // adjust if you have a fixed header
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+    }
   }
 
   return (
@@ -13,7 +20,7 @@ export default function Hero() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
-      {/* Content container */}
+      {/* Content */}
       <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6 lg:px-8 text-center space-y-8 animate-float">
         {/* Headline */}
         <div className="space-y-4">
@@ -27,8 +34,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl mx-auto text-white max-w-3xl animate-slide-up animate-stagger-1">
-            Cutting-edge solutions for your digital world. Transform your business with Roha Systems' innovative technology
-            platform.
+            Cutting-edge solutions for your digital world. Transform your business with Roha Systems' innovative technology platform.
           </p>
         </div>
 
@@ -42,7 +48,7 @@ export default function Hero() {
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="px-8 py-3 border-2 border-white text-white rounded-full hover:bg-white/10 transition-all duration-300 font-semibold text-lg transform hover:scale-105 active:scale-95"
+            className="px-8 py-3 bg-primary text-white rounded-full hover:bg-accent transition-all duration-300 font-semibold text-lg shadow-lg shadow-primary/50 transform hover:scale-105 active:scale-95"
           >
             Get Started
           </button>

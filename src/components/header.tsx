@@ -28,7 +28,7 @@ export default function Header({
 
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-background/80 border-b border-border shadow-lg shadow-primary/10">
-      <nav className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between"> {/* reduced py-4 → py-2 */}
+      <nav className="max-w-7xl mx-auto px-6 py- flex items-center justify-between"> {/* reduced py-4 → py-2 */}
         {/* Logo */}
         <div className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-opacity duration-300">
           <img
