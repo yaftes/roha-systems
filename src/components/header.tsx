@@ -27,7 +27,7 @@ export default function Header({
   }
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-background/80 border-b border-border shadow-lg shadow-primary/10">
+    <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-background/80 border-b border-border shadow-lg shadow-[#2384d2]/10">
       <nav className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
         {/* Logo & Brand */}
         <div className="flex items-center gap-4 cursor-pointer group">
@@ -37,8 +37,13 @@ export default function Header({
             className="w-24 h-24 sm:w-28 sm:h-28 object-contain transform group-hover:scale-110 transition-transform duration-500"
           />
           <div className="flex flex-col">
-            <span className="text-3xl sm:text-4xl font-extrabold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent tracking-tight">
-              Roha Systems
+            <span
+              className={`text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent tracking-tight 
+              bg-gradient-to-r ${
+                isDark ? "from-white" : "from-black"
+              } to-[#2384d2]`}
+            >
+              ROHA SYSTEMS
             </span>
           </div>
         </div>
@@ -49,7 +54,7 @@ export default function Header({
             <button
               key={link}
               onClick={() => scrollToSection(link)}
-              className="relative text-lg text-foreground font-medium hover:text-accent transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-primary after:rounded-full after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-lg text-foreground font-medium hover:text-[#2384d2] transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1 after:bg-[#2384d2] after:rounded-full after:transition-all after:duration-300 hover:after:w-full"
             >
               {link.charAt(0).toUpperCase() + link.slice(1)}
             </button>
@@ -60,14 +65,14 @@ export default function Header({
         <div className="hidden md:flex items-center gap-6">
           <button
             onClick={toggleTheme}
-            className="p-3 rounded-full bg-primary/20 border border-primary hover:bg-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 transform hover:scale-110"
+            className="p-3 rounded-full bg-[#2384d2]/20 border border-[#2384d2] hover:bg-[#2384d2]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#2384d2]/40 transform hover:scale-110"
             aria-label="Toggle theme"
           >
             {isDark ? <Sun className="w-6 h-6 text-white" /> : <Moon className="w-6 h-6 text-white" />}
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="px-8 py-3 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/40 hover:scale-105 transform transition-transform duration-300"
+            className="px-8 py-3 bg-[#2384d2] text-white rounded-full font-bold shadow-lg shadow-[#2384d2]/40 hover:scale-105 transform transition-transform duration-300"
           >
             Get Started
           </button>
@@ -77,7 +82,7 @@ export default function Header({
         <div className="md:hidden flex items-center gap-4">
           <button
             onClick={toggleTheme}
-            className="p-3 rounded-full bg-primary/20 border border-primary hover:bg-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40"
+            className="p-3 rounded-full bg-[#2384d2]/20 border border-[#2384d2] hover:bg-[#2384d2]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#2384d2]/40"
             aria-label="Toggle theme"
           >
             {isDark ? <Sun className="w-6 h-6 text-white" /> : <Moon className="w-6 h-6 text-white" />}
@@ -99,14 +104,14 @@ export default function Header({
             <button
               key={link}
               onClick={() => scrollToSection(link)}
-              className="w-full text-center py-3 text-lg text-foreground hover:text-accent rounded-lg transition-all duration-300"
+              className="w-full text-center py-3 text-lg text-foreground hover:text-[#2384d2] rounded-lg transition-all duration-300"
             >
               {link.charAt(0).toUpperCase() + link.slice(1)}
             </button>
           ))}
           <button
             onClick={() => scrollToSection("contact")}
-            className="w-full py-3 bg-primary text-white rounded-full font-bold hover:scale-105 transform transition-transform duration-300"
+            className="w-full py-3 bg-[#2384d2] text-white rounded-full font-bold hover:scale-105 transform transition-transform duration-300"
           >
             Get Started
           </button>

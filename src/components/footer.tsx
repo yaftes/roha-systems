@@ -1,6 +1,8 @@
 import { Linkedin, Twitter, Github } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
+const PRIMARY_COLOR = "#2384d2"
+
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
@@ -25,14 +27,13 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
-          <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-1" : "opacity-0"}`}>
+          <div className={`${isVisible ? "animate-slide-up animate-stagger-1" : "opacity-0"} space-y-4`}>
             <div className="flex items-center gap-2 group cursor-pointer hover:opacity-80 transition-opacity">
               <img
-                src="../../public/logo-dark.png" // directly using light logo from public folder
+                src="/logo-dark.png"
                 alt="Roha Systems Logo"
                 className="w-10 h-10 object-contain"
               />
-              <span className="font-bold text-lg">Roha Systems</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Innovating the future of technology, one solution at a time.
@@ -40,7 +41,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-2" : "opacity-0"}`}>
+          <div className={`${isVisible ? "animate-slide-up animate-stagger-2" : "opacity-0"} space-y-4`}>
             <h4 className="font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {["home", "about", "services", "contact"].map((link) => (
@@ -48,9 +49,10 @@ export default function Footer() {
                   <a
                     href={`#${link}`}
                     className="hover:text-primary transition-colors duration-300 relative group"
+                    style={{ color: PRIMARY_COLOR }}
                   >
                     {link.charAt(0).toUpperCase() + link.slice(1)}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" style={{ backgroundColor: PRIMARY_COLOR }} />
                   </a>
                 </li>
               ))}
@@ -58,7 +60,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-3" : "opacity-0"}`}>
+          <div className={`${isVisible ? "animate-slide-up animate-stagger-3" : "opacity-0"} space-y-4`}>
             <h4 className="font-semibold">Services</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {["Lightning Fast", "Enterprise Security", "Rapid Deployment", "Expert Support"].map((service) => (
@@ -66,9 +68,10 @@ export default function Footer() {
                   <a
                     href="#services"
                     className="hover:text-primary transition-colors duration-300 relative group"
+                    style={{ color: PRIMARY_COLOR }}
                   >
                     {service}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" style={{ backgroundColor: PRIMARY_COLOR }} />
                   </a>
                 </li>
               ))}
@@ -76,16 +79,20 @@ export default function Footer() {
           </div>
 
           {/* Social */}
-          <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-4" : "opacity-0"}`}>
+          <div className={`${isVisible ? "animate-slide-up animate-stagger-4" : "opacity-0"} space-y-4`}>
             <h4 className="font-semibold">Follow Us</h4>
             <div className="flex gap-4">
-              {[Linkedin, Twitter,].map((Icon, idx) => (
+              {[Linkedin, Twitter, Github].map((Icon, idx) => (
                 <a
                   key={idx}
                   href="#"
-                  className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transform"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110"
+                  style={{
+                    backgroundColor: "rgba(35,132,210,0.2)",
+                    boxShadow: "0 4px 12px rgba(35,132,210,0.2)",
+                  }}
                 >
-                  <Icon className="w-5 h-5 text-primary" />
+                  <Icon className="w-5 h-5" style={{ color: PRIMARY_COLOR }} />
                 </a>
               ))}
             </div>

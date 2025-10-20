@@ -22,8 +22,12 @@ export default function About() {
       className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-card/20 transition-colors duration-300"
     >
       <div ref={ref} className="relative max-w-5xl mx-auto text-center space-y-10">
-        <h2 className={`text-4xl sm:text-5xl font-bold ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
-          About Roha Systems
+        <h2
+          className={`text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#2384d2] to-accent ${
+            isVisible ? "animate-slide-up" : "opacity-0"
+          }`}
+        >
+          About
         </h2>
 
         <div className="space-y-6 text-lg text-muted-foreground">

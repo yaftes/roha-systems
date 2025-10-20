@@ -29,7 +29,7 @@ export default function Hero() {
           </p>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight text-white animate-slide-up">
             Innovating the Future of{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-pulse">
+            <span className="bg-gradient-to-r from-[#2384d2] to-accent bg-clip-text text-transparent animate-pulse">
               Technology
             </span>
           </h1>
@@ -42,13 +42,13 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-slide-up animate-stagger-2">
           <button
             onClick={() => scrollToSection("services")}
-            className="px-8 py-3 bg-primary text-white rounded-full hover:bg-accent transition-all duration-300 font-semibold text-lg shadow-lg shadow-primary/50 transform hover:scale-105 active:scale-95"
+            className="px-8 py-3 bg-[#2384d2] text-white rounded-full hover:bg-accent transition-all duration-300 font-semibold text-lg shadow-lg shadow-[#2384d2]/50 transform hover:scale-105 active:scale-95"
           >
             Learn More
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="px-8 py-3 bg-primary text-white rounded-full hover:bg-accent transition-all duration-300 font-semibold text-lg shadow-lg shadow-primary/50 transform hover:scale-105 active:scale-95"
+            className="px-8 py-3 bg-[#2384d2] text-white rounded-full hover:bg-accent transition-all duration-300 font-semibold text-lg shadow-lg shadow-[#2384d2]/50 transform hover:scale-105 active:scale-95"
           >
             Get Started
           </button>

@@ -1,7 +1,4 @@
-"use client"
-
 import { useEffect, useRef, useState } from "react"
-import type React from "react"
 import { Code2, Globe, Smartphone, Cloud, Database, Zap } from "lucide-react"
 
 const services = [
@@ -43,9 +40,11 @@ const services = [
   },
 ]
 
+const PRIMARY_COLOR = "#2384d2"
+
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null) // ✅ fix ref type
+  const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -64,7 +63,9 @@ export default function Services() {
       <div ref={ref} className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className={`text-center mb-16 space-y-4 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
-          <h2 className="text-4xl sm:text-5xl font-bold">Our Services</h2>
+          <h2 className={`text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[${PRIMARY_COLOR}] to-accent`}>
+            Our Services
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive technology solutions designed to accelerate your digital transformation and drive business growth
           </p>
@@ -77,12 +78,18 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className={`group p-6 rounded-xl bg-card/50 border border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 space-y-4 ${
+                className={`group p-6 rounded-xl bg-card/50 border border-border hover:border-[${PRIMARY_COLOR}]/50 hover:bg-card/80 transition-all duration-300 hover:shadow-lg hover:shadow-[${PRIMARY_COLOR}]/10 space-y-4 ${
                   isVisible ? `animate-slide-up animate-stagger-${(index % 5) + 1}` : "opacity-0"
                 }`}
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/30 group-hover:scale-110">
-                  <Icon className="w-6 h-6 text-primary" />
+                <div
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110`}
+                  style={{
+                    backgroundColor: "rgba(35, 132, 210, 0.2)",
+                    boxShadow: "0 4px 12px rgba(35, 132, 210, 0.2)",
+                  }}
+                >
+                  <Icon className="w-6 h-6" style={{ color: PRIMARY_COLOR }} />
                 </div>
                 <h3 className="text-xl font-semibold">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>

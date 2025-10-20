@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react"
 import type React from "react"
 import { Mail, Phone, MapPin } from "lucide-react"
 
+const PRIMARY_COLOR = "#2384d2"
+
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
@@ -35,10 +37,9 @@ export default function Contact() {
       className="w-full py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
     >
       <div ref={ref} className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-        {/* Contact Info */}
         <div className={`${isVisible ? "animate-slide-left" : "opacity-0"} space-y-8`}>
           <div className="space-y-4">
-            <h2 className="text-4xl font-bold">Get In Touch</h2>
+            
             <p className="text-muted-foreground">
               Ready to transform your business? Let's talk with Roha Systems.
             </p>
@@ -47,23 +48,29 @@ export default function Contact() {
           <div className="space-y-6">
             {[
               {
-                icon: <Mail className="w-6 h-6 text-primary" />,
+                icon: <Mail className="w-6 h-6" style={{ color: PRIMARY_COLOR }} />,
                 title: "Email",
                 desc: "hello@rohasystems.com",
               },
               {
-                icon: <Phone className="w-6 h-6 text-primary" />,
+                icon: <Phone className="w-6 h-6" style={{ color: PRIMARY_COLOR }} />,
                 title: "Phone",
                 desc: "+251924808008",
               },
               {
-                icon: <MapPin className="w-6 h-6 text-primary" />,
+                icon: <MapPin className="w-6 h-6" style={{ color: PRIMARY_COLOR }} />,
                 title: "Address",
                 desc: "Ethiopia, Addis Abeba",
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-4 group cursor-pointer">
-                <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-300 group-hover:scale-110">
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                  style={{
+                    backgroundColor: "rgba(35, 132, 210, 0.2)",
+                    boxShadow: "0 4px 12px rgba(35, 132, 210, 0.2)",
+                  }}
+                >
                   {item.icon}
                 </div>
                 <div>
@@ -86,7 +93,8 @@ export default function Contact() {
             placeholder="Your name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none transition-all duration-300 text-foreground focus:shadow-lg focus:shadow-primary/20"
+            className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:outline-none transition-all duration-300 text-foreground"
+            style={{ borderColor: PRIMARY_COLOR }}
           />
           <input
             type="email"
@@ -94,7 +102,8 @@ export default function Contact() {
             placeholder="your@email.com"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none transition-all duration-300 text-foreground focus:shadow-lg focus:shadow-primary/20"
+            className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:outline-none transition-all duration-300 text-foreground"
+            style={{ borderColor: PRIMARY_COLOR }}
           />
           <textarea
             required
@@ -102,11 +111,16 @@ export default function Contact() {
             rows={5}
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none transition-all duration-300 text-foreground resize-none focus:shadow-lg focus:shadow-primary/20"
+            className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:outline-none transition-all duration-300 text-foreground resize-none"
+            style={{ borderColor: PRIMARY_COLOR }}
           />
           <button
             type="submit"
-            className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-accent transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 active:scale-95"
+            className="w-full px-6 py-3 rounded-lg font-semibold text-white transform transition-all duration-300 hover:scale-105 active:scale-95"
+            style={{
+              backgroundColor: PRIMARY_COLOR,
+              boxShadow: `0 4px 12px rgba(35, 132, 210, 0.3)`,
+            }}
           >
             {submitted ? "Message Sent! ✓" : "Send Message"}
           </button>
