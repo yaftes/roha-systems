@@ -6,7 +6,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null) // ✅ fix ref type
+  const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,23 +39,29 @@ export default function Contact() {
         <div className={`${isVisible ? "animate-slide-left" : "opacity-0"} space-y-8`}>
           <div className="space-y-4">
             <h2 className="text-4xl font-bold">Get In Touch</h2>
-            <p className="text-muted-foreground">Ready to transform your business? Let's talk.</p>
+            <p className="text-muted-foreground">
+              Ready to transform your business? Let's talk with Roha Systems.
+            </p>
           </div>
 
           <div className="space-y-6">
-            {[{
-              icon: <Mail className="w-6 h-6 text-primary" />,
-              title: "Email",
-              desc: "hello@lunalabs.com"
-            },{
-              icon: <Phone className="w-6 h-6 text-primary" />,
-              title: "Phone",
-              desc: "+1 (555) 123-4567"
-            },{
-              icon: <MapPin className="w-6 h-6 text-primary" />,
-              title: "Address",
-              desc: "123 Innovation Drive, Tech City, TC 12345"
-            }].map((item, i) => (
+            {[
+              {
+                icon: <Mail className="w-6 h-6 text-primary" />,
+                title: "Email",
+                desc: "hello@rohasystems.com",
+              },
+              {
+                icon: <Phone className="w-6 h-6 text-primary" />,
+                title: "Phone",
+                desc: "+251924808008",
+              },
+              {
+                icon: <MapPin className="w-6 h-6 text-primary" />,
+                title: "Address",
+                desc: "Ethiopia, Addis Abeba",
+              },
+            ].map((item, i) => (
               <div key={i} className="flex gap-4 group cursor-pointer">
                 <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-300 group-hover:scale-110">
                   {item.icon}

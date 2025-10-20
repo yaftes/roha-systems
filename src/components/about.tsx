@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react"
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null) // ✅ Change here
+  const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true)
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
 
     if (ref.current) observer.observe(ref.current)
@@ -23,12 +23,12 @@ export default function About() {
     >
       <div ref={ref} className="relative max-w-5xl mx-auto text-center space-y-10">
         <h2 className={`text-4xl sm:text-5xl font-bold ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
-          About Luna Labs
+          About Roha Systems
         </h2>
 
         <div className="space-y-6 text-lg text-muted-foreground">
           <p className={isVisible ? "animate-slide-up animate-stagger-1" : "opacity-0"}>
-            Luna Labs is a forward-thinking technology company dedicated to pushing the boundaries of innovation. We
+            Roha Systems is a forward-thinking technology company dedicated to pushing the boundaries of innovation. We
             believe in creating solutions that not only solve today's problems but anticipate tomorrow's challenges.
           </p>
           <p className={isVisible ? "animate-slide-up animate-stagger-2" : "opacity-0"}>

@@ -1,4 +1,3 @@
-
 export default function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -28,7 +27,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl mx-auto text-white max-w-3xl animate-slide-up animate-stagger-1">
-            Cutting-edge solutions for your digital world. Transform your business with Luna Labs' innovative technology
+            Cutting-edge solutions for your digital world. Transform your business with Roha Systems' innovative technology
             platform.
           </p>
         </div>

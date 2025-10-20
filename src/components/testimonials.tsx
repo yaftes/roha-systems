@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react"
 
 const testimonials = [
@@ -6,19 +5,19 @@ const testimonials = [
     name: "Sarah Chen",
     role: "CEO, TechVenture",
     content:
-      "Luna Labs transformed our entire infrastructure. The results exceeded our expectations and the support was exceptional.",
+      "Roha Systems transformed our entire infrastructure. The results exceeded our expectations and the support was exceptional.",
   },
   {
     name: "Marcus Johnson",
     role: "CTO, InnovateCo",
     content:
-      "Working with Luna Labs was a game-changer. Their expertise and dedication to excellence is unmatched in the industry.",
+      "Working with Roha Systems was a game-changer. Their expertise and dedication to excellence is unmatched in the industry.",
   },
   {
     name: "Elena Rodriguez",
     role: "Founder, FutureScale",
     content:
-      "The team at Luna Labs understood our vision immediately and delivered a solution that perfectly aligned with our goals.",
+      "The team at Roha Systems understood our vision immediately and delivered a solution that perfectly aligned with our goals.",
   },
 ]
 

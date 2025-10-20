@@ -1,10 +1,9 @@
-
 import { Linkedin, Twitter, Github } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null) // ✅ TS-safe
+  const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,10 +27,12 @@ export default function Footer() {
           {/* Brand */}
           <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-1" : "opacity-0"}`}>
             <div className="flex items-center gap-2 group cursor-pointer hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary/50 transition-all duration-300">
-                <span className="text-primary-foreground font-bold">L</span>
-              </div>
-              <span className="font-bold text-lg">Luna Labs</span>
+              <img
+                src="../../public/logo-dark.png" // directly using light logo from public folder
+                alt="Roha Systems Logo"
+                className="w-10 h-10 object-contain"
+              />
+              <span className="font-bold text-lg">Roha Systems</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Innovating the future of technology, one solution at a time.
@@ -78,7 +79,7 @@ export default function Footer() {
           <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-4" : "opacity-0"}`}>
             <h4 className="font-semibold">Follow Us</h4>
             <div className="flex gap-4">
-              {[Linkedin, Twitter, Github].map((Icon, idx) => (
+              {[Linkedin, Twitter,].map((Icon, idx) => (
                 <a
                   key={idx}
                   href="#"
@@ -92,7 +93,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2025 Luna Labs. All rights reserved.</p>
+          <p>© 2025 Roha Systems. All rights reserved.</p>
         </div>
       </div>
     </footer>
