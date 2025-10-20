@@ -1,32 +1,26 @@
-"use client"
 
 import { Linkedin, Twitter, Github } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null) // ✅ TS-safe
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [])
 
   return (
     <footer
-      className="border-t border-border bg-card/30 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+      className="w-full border-t border-border bg-card/30 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
       ref={ref}
     >
       <div className="max-w-6xl mx-auto">
@@ -48,30 +42,17 @@ export default function Footer() {
           <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-2" : "opacity-0"}`}>
             <h4 className="font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="#home" className="hover:text-primary transition-colors duration-300 relative group">
-                  Home
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-primary transition-colors duration-300 relative group">
-                  About
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-primary transition-colors duration-300 relative group">
-                  Services
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-primary transition-colors duration-300 relative group">
-                  Contact
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
+              {["home", "about", "services", "contact"].map((link) => (
+                <li key={link}>
+                  <a
+                    href={`#${link}`}
+                    className="hover:text-primary transition-colors duration-300 relative group"
+                  >
+                    {link.charAt(0).toUpperCase() + link.slice(1)}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -79,30 +60,17 @@ export default function Footer() {
           <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-3" : "opacity-0"}`}>
             <h4 className="font-semibold">Services</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="#services" className="hover:text-primary transition-colors duration-300 relative group">
-                  Lightning Fast
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-primary transition-colors duration-300 relative group">
-                  Enterprise Security
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-primary transition-colors duration-300 relative group">
-                  Rapid Deployment
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-primary transition-colors duration-300 relative group">
-                  Expert Support
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
+              {["Lightning Fast", "Enterprise Security", "Rapid Deployment", "Expert Support"].map((service) => (
+                <li key={service}>
+                  <a
+                    href="#services"
+                    className="hover:text-primary transition-colors duration-300 relative group"
+                  >
+                    {service}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -110,24 +78,15 @@ export default function Footer() {
           <div className={`space-y-4 ${isVisible ? "animate-slide-up animate-stagger-4" : "opacity-0"}`}>
             <h4 className="font-semibold">Follow Us</h4>
             <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transform"
-              >
-                <Linkedin className="w-5 h-5 text-primary" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transform"
-              >
-                <Twitter className="w-5 h-5 text-primary" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transform"
-              >
-                <Github className="w-5 h-5 text-primary" />
-              </a>
+              {[Linkedin, Twitter, Github].map((Icon, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transform"
+                >
+                  <Icon className="w-5 h-5 text-primary" />
+                </a>
+              ))}
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-"use client"
 
 import { useEffect, useRef, useState } from "react"
 
@@ -25,45 +24,45 @@ const testimonials = [
 
 export default function Testimonials() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null) // ✅ TS-safe ref
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/30 transition-colors duration-300">
+    <section
+      id="testimonials"
+      className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-card/30 transition-colors duration-300"
+    >
       <div className="max-w-6xl mx-auto" ref={ref}>
+        {/* Section Header */}
         <div className={`text-center mb-16 space-y-4 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
           <h2 className="text-4xl sm:text-5xl font-bold">What Our Clients Say</h2>
           <p className="text-lg text-muted-foreground">Trusted by leading companies worldwide</p>
         </div>
 
+        {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((t, index) => (
             <div
               key={index}
               className={`p-6 rounded-xl bg-background border border-border hover:border-primary/50 transition-all duration-300 space-y-4 hover:shadow-lg hover:shadow-primary/10 transform hover:scale-105 ${
                 isVisible ? `animate-slide-up animate-stagger-${(index % 5) + 1}` : "opacity-0"
               }`}
             >
-              <p className="text-muted-foreground italic">"{testimonial.content}"</p>
+              <p className="text-muted-foreground italic">"{t.content}"</p>
               <div className="pt-4 border-t border-border">
-                <p className="font-semibold text-foreground">{testimonial.name}</p>
-                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                <p className="font-semibold text-foreground">{t.name}</p>
+                <p className="text-sm text-muted-foreground">{t.role}</p>
               </div>
             </div>
           ))}

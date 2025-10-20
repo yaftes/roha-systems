@@ -1,4 +1,3 @@
-"use client"
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -9,14 +8,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-no-repeat"
+      className="w-full min-h-screen relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/cover_page.jpg')" }}
     >
-      {/* Gradient overlay for better readability */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
-      <div className="relative z-10 max-w-4xl text-center space-y-8 animate-float">
-        <div className="space-y-4 animate-slide-up">
+      {/* Content container */}
+      <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6 lg:px-8 text-center space-y-8 animate-float">
+        {/* Headline */}
+        <div className="space-y-4">
           <p className="text-sm sm:text-base font-semibold uppercase tracking-widest text-white animate-slide-up">
             ✨ Where Innovation Meets Excellence
           </p>
@@ -26,12 +27,13 @@ export default function Hero() {
               Technology
             </span>
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto text-white animate-slide-up animate-stagger-1">
+          <p className="text-lg sm:text-xl mx-auto text-white max-w-3xl animate-slide-up animate-stagger-1">
             Cutting-edge solutions for your digital world. Transform your business with Luna Labs' innovative technology
             platform.
           </p>
         </div>
 
+        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-slide-up animate-stagger-2">
           <button
             onClick={() => scrollToSection("services")}

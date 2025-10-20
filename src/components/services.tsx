@@ -1,7 +1,8 @@
 "use client"
 
-import { Code2, Globe, Smartphone, Cloud, Database, Zap } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import type React from "react"
+import { Code2, Globe, Smartphone, Cloud, Database, Zap } from "lucide-react"
 
 const services = [
   {
@@ -44,36 +45,32 @@ const services = [
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null) // ✅ fix ref type
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+    <section id="services" className="w-full py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <div ref={ref} className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <div className={`text-center mb-16 space-y-4 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
           <h2 className="text-4xl sm:text-5xl font-bold">Our Services</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive technology solutions designed to accelerate your digital transformation and drive business
-            growth
+            Comprehensive technology solutions designed to accelerate your digital transformation and drive business growth
           </p>
         </div>
 
+        {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon
